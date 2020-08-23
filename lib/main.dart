@@ -42,7 +42,31 @@ class _TodoListPageState extends State<TodoListPage> {
       appBar:AppBar(
         title: Text("남은 할 일"),
       ),
-      body: Container()
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child:Column(
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: TextFeild(
+                    controller: _todoController,
+                  ),
+                ),
+                RaiseButton(
+                  child:Text('추가'),
+                  onPressed: (){},
+                ),
+              ],
+            ),
+            Expanded(
+              child: ListView(
+                children: <Widget>[],
+              )
+            )
+          ],
+        )
+      )
     );
   }
 }
