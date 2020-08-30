@@ -8,7 +8,6 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
     return MaterialApp(
       title: '할 일 관리',
       theme: ThemeData(
@@ -108,10 +107,14 @@ class _TodoListPageState extends State<TodoListPage> {
 
   //할 일 추가 메서드
   void _addTodo(Todo todo){
-    setState(() {
-      _items.add(todo);
-      _todoController.text = '';
-    });
+    Firestore.instance.collection('todo')
+        .add({'title':todo.title, 'isDone':todo.isDone});
+    _todoController.text = '';
+
+    // setState(() {
+    //   _items.add(todo);
+    //   _todoController.text = '';
+    // });
   }
 
   //할 일 삭제 메서드
