@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
+class Todo{
+  bool isDone = false;
+  String title;
+
+  Todo(this.title);
+}
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -49,11 +53,11 @@ class _TodoListPageState extends State<TodoListPage> {
             Row(
               children: <Widget>[
                 Expanded(
-                  child: TextFeild(
+                  child: TextField(
                     controller: _todoController,
                   ),
                 ),
-                RaiseButton(
+                RaisedButton(
                   child:Text('추가'),
                   onPressed: (){},
                 ),
@@ -67,6 +71,25 @@ class _TodoListPageState extends State<TodoListPage> {
           ],
         )
       )
+    );
+  }
+
+  Widget _buildItemWidget(Todo todo){
+    return ListTile(
+      onTap: (){
+        //TODO : 클릭 시 완료/취소 처리
+      },
+      title: Text(
+        todo.title,
+        style : todo.isDone ? TextStyle(decoration: TextDecoration.lineThrough,
+            fontStyle: FontStyle.italic) : TextStyle(fontWeight:FontWeight.bold),
+      ),
+      trailing: IconButton(
+        icon : Icon(Icons.delete_forever),
+        onPressed:(){
+          //TODO:쓰레기통 클릭 시 삭제되도록 수정
+        },
+      ),
     );
   }
 }
