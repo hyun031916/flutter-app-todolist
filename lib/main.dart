@@ -41,7 +41,7 @@ class _TodoListPageState extends State<TodoListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:AppBar(
-        title: Text("남은 할 일"),
+        title: Text("할 일 목록"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
